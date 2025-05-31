@@ -1,0 +1,22 @@
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dbpod
+spec:
+  containers:
+  - image: mysql:5.7
+    name: mysql
+    env:
+    - name: MYSQL_ROOT_PASSWORD
+      value: "rootpasswd"
+    volumeMounts:
+    - name: dbvol
+      mountPath: /var/lib/mysql
+
+  volumes:
+  - name: dbvol
+    hostPath:
+      path: /data
+      type: DirectoryOrCreate
