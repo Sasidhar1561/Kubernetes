@@ -18,10 +18,7 @@ spec:
     spec:
       containers:
       - name: vproapp
-        image: sasidharsaz/vprofileapp
-        volumeMounts:
-        - mountPath: /usr/local/tomcat/webapps
-          name: vpro-app-data      
+        image: sasidharsaz/vprofileapp    
         ports:
         - name: vproapp-port
           containerPort: 8080       
@@ -29,12 +26,6 @@ spec:
       - name: myregistrykey
 
       initContainers:
-      - name: remove-lost-found-file
-        image: busybox:latest
-        command: ["sh", "-c", "rm -rf /usr/local/tomcat/webapps/lost+found"]
-        volumeMounts:
-        - name: vpro-app-data
-          mountPath: /usr/local/tomcat/webapps
 
       - name: init-db
         image: busybox:1.28
@@ -46,11 +37,8 @@ spec:
         image: busybox:1.28
         command: ['sh', '-c', "until nslookup vprocache01.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mydb; sleep 2; done"]  
 
-      volumes:
-       - name: vpro-app-data
-         persistentVolumeClaim:
-           claimName: app-pv-claim
-      
+
+
 
 
   

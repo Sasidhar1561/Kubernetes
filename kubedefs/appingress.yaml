@@ -19,12 +19,3 @@ spec:
             name: vpro-app
             port:
               number: 8080
-  - http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: vpro-app
-            port:
-              number: 8080

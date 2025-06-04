@@ -34,7 +34,7 @@ spec:
       imagePullSecrets:
       - name: myregistrykey
 
-      initcontainers:
+      initContainers:
       - name: remove-lost-found-file
         image: busybox:latest
         args: ["rm", "-rf", "/var/lib/mysql/lost+found"]
@@ -45,7 +45,7 @@ spec:
       volumes:
         - name: vpro-db-data
           persistentVolumeClaim:
-            claimName: pv-claim
+            claimName: db-pv-claim
       
 
 
