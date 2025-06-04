@@ -35,7 +35,7 @@ spec:
       - name: myregistrykey
 
       initcontainers:
-      - name: remove-lost+found-file
+      - name: remove-lost-found-file
         image: busybox:latest
         args: ["rm", "-rf", "/var/lib/mysql/lost+found"]
         volumeMounts:

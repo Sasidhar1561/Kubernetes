@@ -29,7 +29,7 @@ spec:
       - name: myregistrykey
 
       initContainers:
-      - name: remove-lost+found-file
+      - name: remove-lost-found-file
         image: busybox:latest
         command: ["sh", "-c", "rm -rf /usr/local/tomcat/webapps/lost+found"]
         volumeMounts:
