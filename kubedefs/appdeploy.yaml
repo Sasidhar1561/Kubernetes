@@ -49,7 +49,7 @@ spec:
       volumes:
        - name: vpro-app-data
          persistentVolumeClaim:
-         claimName: app-pv-claim
+           claimName: app-pv-claim
       
 
 
